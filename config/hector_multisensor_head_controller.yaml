@@ -1,0 +1,12 @@
+head_lidar_controller:
+    controller:
+        package: dynamixel_controllers
+        module: joint_torque_controller
+        type: JointTorqueController
+    joint_name: head_lidar_spinning_joint
+    joint_speed: 1.0
+    motor:
+        id: 40
+        init: 0
+        min: 0
+        max: 4095

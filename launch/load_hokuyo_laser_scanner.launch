@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<launch>
+   
+   <!-- Connect to the hokuyo lidar -->
+    <node ns="/thor_mang" name="hokuyo" pkg="urg_node" type="urg_node" required="true" output="screen">
+        <rosparam>
+            ip_address: "192.168.0.10" 
+        </rosparam>
+	<rosparam>
+            frame_id: "head_link_hokuyo_laser_frame" 
+        </rosparam>
+    </node>
+    
+</launch>

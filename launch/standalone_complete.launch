@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find hector_components_description)/launch/start_head_lidar_dynamixel_controller.launch"/>
+  <include file="$(find hector_components_description)/launch/start_hector_multisensor_head_alone.launch"/>
+  <include file="$(find hector_components_description)/launch/load_hokuyo_laser_scanner.launch"/>
+
+  <!-- rostopic pub /head_lidar_controller/command std_msgs/Float64 "data: 0.0" -->
+   <!-- Start the spinning of the head lidar -->
+  <node name="set_head_lidar_velocity" pkg="rostopic" type="rostopic" output="screen" args="pub -l /head_lidar_controller/command std_msgs/Float64 'data: 0.6'"/>
+
+</launch>

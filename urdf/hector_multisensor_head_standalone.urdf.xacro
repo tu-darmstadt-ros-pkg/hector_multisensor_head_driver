@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="hector_multisensor_head">
+
+  
+  <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />
+  <xacro:include filename="$(find hector_components_description)/urdf/hector_multisensor_head.urdf.xacro" /> 
+
+<link name="world"/>
+
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="head_link"/>
+  </joint>
+  
+    <hector_multisensor_head_macro parent="world"  name="head" scaling="0.001">
+      <origin xyz="0.0 0.0 -0.006" rpy="${M_PI*0.5} ${0 } ${M_PI*0.5}"/>
+    </hector_multisensor_head_macro>
+
+      <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>thor_mang</robotNamespace>
+    </plugin>
+  </gazebo>
+    
+</robot>
+

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<launch>
+
+   <!-- Load the robot model -->
+  <!--   <param name="robot_description" command="$(find xacro)/xacro.py '$(find hector_components_description)/urdf/hector_multisensor_head_standalone.urdf.xacro'" />-->
+
+    <!-- Publish the robot state -->
+ <!--   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+        <param name="publish_frequency" value="20.0"/>
+  </node>-->
+   
+   <!-- Start the Dynamixel driver manager -->
+    <node  name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+        <rosparam>
+            namespace: dxl_manager
+            serial_ports:
+                lidar_rotation_port:
+                    port_name: "/dev/ttyUSB0"
+                    baud_rate: 57142
+                    min_motor_id: 39
+                    max_motor_id: 41
+                    update_rate: 20
+        </rosparam>
+    </node>
+    
+    <!-- Start head lidar controller -->
+    <rosparam  file="$(find hector_multisensor_head_driver)/config/hector_multisensor_head_controller.yaml" command="load"/>
+    <node name="pan_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py"
+          args="--manager=dxl_manager
+                --port lidar_rotation_port
+                head_lidar_controller"
+          output="screen"/>
+         
+    
+     <!-- Start the Dynamixel Joint States Publisher -->
+   <node ns="/head_lidar_controller" name="dynamixel_joint_states_publisher" pkg="hector_multisensor_head_driver" type="head_dynamixel_state_to_joint_state_node" output="screen" />
+</launch>
