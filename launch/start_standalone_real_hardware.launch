@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find hector_multisensor_head_driver)/launch/load_head_lidar_dynamixel_controller.launch"/>
+  <include file="$(find hector_multisensor_head_driver)/launch/spawn_hector_multisensor_head_alone.launch"/>
+  <include file="$(find hector_multisensor_head_driver)/launch/load_hokuyo_laser_scanner.launch"/>
+  <include file="$(find hector_multisensor_head_driver)/launch/load_asus_rgbd_cam.launch"/>
+
+
+  <node name="set_head_lidar_velocity" pkg="rostopic" type="rostopic" output="screen" args="pub -l /head_lidar_controller/command std_msgs/Float64 'data: 0.5'"/>
+</launch>

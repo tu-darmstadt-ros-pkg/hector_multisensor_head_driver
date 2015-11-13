@@ -2,19 +2,8 @@
 
 <launch>
   
- <!-- <arg name="world" default="worlds/empty.world" />
-  <arg name="gazebo_args" default="" /> -->
-  
   <param name="use_sim_time" value="false" />
   
- <!-- <include file="$(find thor_mang_gazebo)/launch/gazebo_start.launch">
-    <arg name="paused" value="true"/>
-    <arg name="verbose" value="true"/>
-    <arg name="world_name" value="$(arg world)"/>
-    <arg name="gazebo_args" value="$(arg gazebo_args)"/>
-  </include>
-  -->
-
   <!--<include file="$(find hector_components_description)/launch/spawn_hector_multisensor_head.launch"/>-->
   
   <param name="robot_description" command="$(find xacro)/xacro.py '$(find hector_multisensor_head_driver)/urdf/hector_multisensor_head_standalone.urdf.xacro'" />

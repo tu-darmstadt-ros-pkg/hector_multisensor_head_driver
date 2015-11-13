@@ -3,25 +3,39 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="hector_multisensor_head">
 
   
-  <xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />
+  <!--<xacro:include filename="$(find thor_mang_description)/urdf/helper_macros.urdf.xacro.xml" />-->
   <xacro:include filename="$(find hector_components_description)/urdf/hector_multisensor_head.urdf.xacro" /> 
 
-<link name="world"/>
+  <link name="base" >
+    <visual>
+      <geometry>
+            <cylinder length="1.0" radius="0.047"/>
+      </geometry>
+    </visual>
+     <collision>
+      <geometry>
+            <cylinder length="1.0" radius="0.047"/>
+      </geometry>
+    </collision>
+
+  </link>
 
   <joint name="fixed" type="fixed">
-    <parent link="world"/>
+    <parent link="base"/>
     <child link="head_link"/>
+      <origin xyz="0.0 0.0 0.5" rpy="0 0 0"/>
+
   </joint>
   
-    <hector_multisensor_head_macro parent="world"  name="head" scaling="0.001">
-      <origin xyz="0.0 0.0 -0.006" rpy="${M_PI*0.5} ${0 } ${M_PI*0.5}"/>
+    <hector_multisensor_head_macro parent="base"  name="head" scaling="0.001">
+      <origin xyz="0.0 0.0 0" rpy="${M_PI*0.5} ${0 } ${M_PI*0.5}"/> 
     </hector_multisensor_head_macro>
 
-      <gazebo>
+   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>thor_mang</robotNamespace>
     </plugin>
-  </gazebo>
+    </gazebo>
     
 </robot>
 
