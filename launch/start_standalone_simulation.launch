@@ -6,7 +6,7 @@
     <param name="use_sim_time" value="true" />
     
     <include file="$(find thor_mang_gazebo)/launch/gazebo_start.launch">
-      <arg name="paused" value="true"/>
+      <arg name="paused" value="false"/>
       <arg name="verbose" value="true"/>
       <arg name="world_name" value="$(arg world)"/>
     </include>
