@@ -35,7 +35,7 @@ DynamixelStateToJointState::DynamixelStateToJointState()
 }
 void DynamixelStateToJointState::updateJointStates(const dynamixel_msgs::JointState& msg)
 {  
-	this->dynamixelJointStates.header.stamp = ros::Time::now();
+    this->dynamixelJointStates.header.stamp = msg.header.stamp;
 	this->dynamixelJointStates.name[0] = msg.name;
 	this->dynamixelJointStates.position[0] = msg.current_pos;
 	this->dynamixelJointStates.velocity[0] = msg.velocity;
