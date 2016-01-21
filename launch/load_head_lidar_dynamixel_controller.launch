@@ -2,11 +2,13 @@
 
 <launch>
 
-   <!-- Load the robot model -->
+  <arg name="port" default="/dev/ttyUSB2"/>
+
+  <!-- Load the robot model -->
   <!--   <param name="robot_description" command="$(find xacro)/xacro.py '$(find hector_components_description)/urdf/hector_multisensor_head_standalone.urdf.xacro'" />-->
 
-    <!-- Publish the robot state -->
- <!--   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+  <!-- Publish the robot state -->
+<!--<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
         <param name="publish_frequency" value="20.0"/>
   </node>-->
    
@@ -16,7 +18,7 @@
             namespace: dxl_manager
             serial_ports:
                 lidar_rotation_port:
-                    port_name: "/dev/ttyUSB0"
+                    port_name: $(arg port)
                     baud_rate: 57142
                     min_motor_id: 39
                     max_motor_id: 41
