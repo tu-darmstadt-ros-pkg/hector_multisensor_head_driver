@@ -3,7 +3,7 @@
 <launch>
 
   <include file="$(find hector_multisensor_head_driver)/launch/load_head_lidar_dynamixel_controller.launch">
-        <arg name="port" value="/dev/ttyUSB3" />
+        <arg name="port" value="/dev/ttyUSB2" />
   </include>
   <include file="$(find hector_multisensor_head_driver)/launch/spawn_hector_multisensor_head_alone.launch"/>
   <include file="$(find hector_multisensor_head_driver)/launch/load_hokuyo_laser_scanner.launch"/>

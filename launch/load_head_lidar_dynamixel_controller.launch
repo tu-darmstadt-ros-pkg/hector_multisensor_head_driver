@@ -14,11 +14,11 @@
    
    <!-- Start the Dynamixel driver manager -->
     <node  name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
-        <rosparam>
+        <rosparam subst_value="true">
             namespace: dxl_manager
             serial_ports:
                 lidar_rotation_port:
-                    port_name: $(arg port)
+                    port_name: "$(arg port)"
                     baud_rate: 57142
                     min_motor_id: 39
                     max_motor_id: 41
