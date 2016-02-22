@@ -16,7 +16,7 @@
         frame_id: head_link_hokuyo_laser_frame
         calibrate_time: true
         time_offset: 0.0
-        publish_multiecho: false
+        publish_multiecho: true
       </rosparam>
       <remap from="scan" to="/head_lidar/scan"/>
     </node>
