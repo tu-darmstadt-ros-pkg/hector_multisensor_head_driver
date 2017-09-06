@@ -5,7 +5,7 @@
     <group ns="/thor_mang">
           <rosparam file="$(find hector_multisensor_head_driver)/config/head_state_controller.yaml" command="load" />
 
-      <include file="$(find thor_mang_gazebo_ros_control)/launch/head/hector_multisensor_head_controllers.launch"/>
+      <include file="$(find thor_mang_gazebo)/launch/hector_multisensor_head_controller.launch"/>
       <node name="head_state_controller_spawner" pkg="controller_manager" type="spawner" args="head_joint_state_controller" /> 
     </group>  
 
