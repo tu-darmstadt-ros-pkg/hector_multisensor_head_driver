@@ -114,7 +114,7 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(${catkin_INCLUDE_DIRS})
 
 ## Declare a C++ library
 # add_library(hector_multisensor_head_driver
@@ -127,11 +127,10 @@ catkin_package(
 # add_dependencies(hector_multisensor_head_driver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
- add_executable(head_dynamixel_state_to_joint_state_node 
- src/dynamixel_state_to_joint_state.cpp)
- add_dependencies(head_dynamixel_state_to_joint_state_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(head_dynamixel_state_to_joint_state_node src/dynamixel_state_to_joint_state.cpp)
+add_dependencies(head_dynamixel_state_to_joint_state_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
- target_link_libraries(head_dynamixel_state_to_joint_state_node ${catkin_LIBRARIES} )
+target_link_libraries(head_dynamixel_state_to_joint_state_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -153,10 +152,10 @@ catkin_package(
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
-install(TARGETS
-   head_dynamixel_state_to_joint_state_node
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+#install(TARGETS
+#   head_dynamixel_state_to_joint_state_node
+#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
 
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/
